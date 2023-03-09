@@ -1,0 +1,130 @@
+{% extends "exchange\base.html" %}
+
+{% block content %}
+<!-- main container -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+
+<div class="main_container">
+    <!-- left side -->
+    <div class="left_side">
+        <h3>Table of unpaid invoices</h3>
+        <div class="div_unpaid_invoices_table">
+        <table class="table table-striped" id="unpaid_invoices_table">
+            <thead class="t_head">
+            <tr>
+                <th scope="col">Company name</th>
+                <th scope="col">Invoice date</th>
+                <th scope="col">Invoice amount</th>
+                <th scope="col">Amount in PLN</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for unp_inv in unpaid_invoices %}
+            <tr>
+                <td>{{unp_inv.companyname}}</td>
+                <td>{{unp_inv.inv_date|date:"d M Y" }}</td>
+                <td>{{unp_inv.inv_amount}}{{unp_inv.inv_currency}}</td>
+                <td>{{unp_inv.inv_amount_PLN}}PLN</td>
+                <td>
+                <a href="/exchange/invoice_update/{{unp_inv.id}}" class="a_tag_button_edit_button">Edit</a>
+                <a href="/exchange/invoice_detail/{{unp_inv.id}}" class="a_tag_button_go_to_details">Details</a>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        </div>
+        <br>
+        <h3>Stats (by invoice date):</h3>
+        <div class="current_sums">
+            <div class="card">
+                <div class="card-header">
+                Current month
+                </div>
+                <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                    <p> {{curr_month.inv_amount_PLN__sum|floatformat:"0"}} PLN</p>
+                </blockquote>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                Previous Month
+                </div>
+                <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                    <p>{{prev_month.inv_amount_PLN__sum|floatformat:"0"}} PLN</p>
+                </blockquote>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                Year to date
+                </div>
+                <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                    <p> {{YTD.ytd_sum|floatformat:"0"}} PLN</p>
+                </blockquote>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                AVG per month this year*
+                </div>
+                <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                    <p>{{YTD_full_months.ytd_avg_month|floatformat:"0"}} PLN</p>
+                </blockquote>
+                </div>
+            </div>
+        </div>
+        <span class="small_font">*AVG per month this year calculates only full months, ex. in march summing invoices from Jan and Feb and divide by two, march invoices will be included in april.</span>
+        <br>
+        <br>
+         
+    </div>
+    
+    <!-- right side -->
+<div class="right_side">
+    
+    <h3>Sum of invoices amount in PLN by month (last 12 months)</h3>
+        <div>
+            
+            <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
+            <canvas id="myChart" width="200" height="100"></canvas>
+            <script>
+
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: {{monthly_sales_labels}},
+                datasets: [{
+                    label: 'Sum of invoice amounts',
+                    data: {{monthly_sales_values}},
+                    backgroundColor: [
+                        'rgba(32, 54, 255, 0.5)'
+                    ],
+                    borderColor: [
+                        'rgba(0, 0, 0, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+            });
+            </script>
+        </div>
+</div>
+
+
+
+    
+{% endblock %}

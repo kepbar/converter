@@ -1,0 +1,41 @@
+
+{% extends "exchange\base.html" %}
+<!-- <link rel="stylesheet" href="D:\Projekt\converter\exchange\templates\exchange\style.css"> -->
+{% include 'boolean_icon.html' with myvar=row.is_paid %}
+{% block content %}
+<h1>Invoice table ordered by invoice date</h1>
+<table class="table table-striped">
+    <thead class="t_head">
+      <tr>
+        <th scope="col">Company name</th>
+        <th scope="col">Invoice date</th>
+        <th scope="col">Invoice amount</th>
+        <th scope="col">Invoice currency</th>
+        <th scope="col">Exchange rate date</th>
+        <th scope="col">Exchange rate</th>
+        <th scope="col">Amount in PLN</th>
+        <th scope="col">Paid</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for row in invoices_table %}
+      <tr>
+        <td>{{row.companyname}}</td>
+        <td>{{row.inv_date|date:"d M Y" }}</td>
+        <td>{{row.inv_amount}}</td>
+        <td>{{row.inv_currency}}</td>
+        <td>{{row.rate_date|date:"d M Y" }}</td>
+        <td>{{row.rate}}</td>
+        <td>{{row.inv_amount_PLN}}PLN</td>
+        <td>{{row.is_paid}}</td>
+        <td>
+          <a href="/exchange/invoice_update/{{row.id}}" class="a_tag_button_edit_button">Edit</a>
+          <a href="/exchange/invoice_delete/{{row.id}}" class="a_tag_button_delete_button">Delete</a>
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

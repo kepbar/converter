@@ -1,0 +1,32 @@
+{% extends "exchange\base.html" %}
+{% block content %}
+    
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-dismissible alert-success">
+            <strong>{{message}}</strong>
+            </div>
+        {% endfor %}
+    {% endif %}
+    <h3>Add exchange rate for selected currency to database</h3>
+        <!-- <label for="curr_code">Currency code: </label>
+        <input id="curr_code" type="text" name="curr_code" maxlength="3" required><br>
+        <label for="date_start">Download rates from: </label>
+        <input id="date_start" type="date" name="date_start" required><br> -->    
+        
+
+    </form>
+    <div>
+        <form method="POST">
+            {% csrf_token %}
+            {% for field in form %}
+                {{field.label_tag}}
+                <p>{{field}}</p>
+                {{field.errors}}
+            {% endfor %}
+            <p>
+                <input type="Submit" class="submit_button" name="submit" value="Submit"/>
+            </p>
+        </form>
+    </div>
+{% endblock %}

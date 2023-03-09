@@ -1,0 +1,25 @@
+{% extends "exchange\base.html" %}
+
+{% block content %}
+<div class="welcome_page">
+    <div>
+    <h1 class="welcome_h1">Welcome!</h1>
+    <p>This website allows you to save your invoices in foreign currencies and convert them into PLN at the current exchange rate on a given day. 
+        To add a new invoice, click <span class="bold">Invoices</span> on navbar, then click <span class="bold">Add</span> and fill in the boxes. If you cannot find a currency in the dropdown list, you can download it from NBP. 
+        To do so, go to the <span class="bold">Exchange</span> Rates tab, click <span class="bold">Add</span> and select the currency (the list includes all currencies available on NBP, 
+        apart from these already downloaded) and the date of the currency exchange rate.</p>
+
+    <p>To download new exchange rates, go to the <span class="bold">Exchange</span> Rates tab, click <span class="bold">List & Refresh</span> and select the blue <span class="bold">Refresh</span> button. Below you will find a list with all downloaded currencies. 
+        The rates shown are from the previous day.</p>
+    <p>You can view invoices in two ways:</p>
+    <p>1) Table (<span class="bold">Invoices</span> => <span class="bold">Table</span>)</p>
+    <p>2) List (<span class="bold">Invoices</span> => <span class="bold">List</span>)</p>
+    <p>To edit invoices in table view, click the Edit button.</p>
+    <p>To edit invoices in list view, first click Details to go to detail view, then select <span class="bold">Edit</span>.</p>
+    <p>Once you have approved the changes, the rate and currency exchange rate will be updated. 
+        Next to the <span class="bold">Edit</span> button you will find a <span class="bold">Delete</span> button that allows you delete an invoice.</p>
+    <p>Under <span class="bold">HOME & SUMMARY</span> you will find a summary of your saved invoices. The table contains a list of unpaid invoices, statistics, i.e. the sum of the invoice values for the current month, 
+        the previous month, YTD and the average monthly total for full months. In addition, the column chart shows the sum of invoice values for the last 12 months.</p>
+    </div>
+</div>     
+{% endblock %}
