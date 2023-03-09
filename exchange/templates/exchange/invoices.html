@@ -1,0 +1,36 @@
+{% extends "exchange\base.html" %}
+
+{% block content %}
+    <h1>Add new invoice:</h1>
+    {% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-dismissible alert-success">
+        <strong>{{message}}</strong>
+        </div>
+    {% endfor %}
+    {% endif %}
+<!-- <div class="main_container">
+    <div class="first_column"> -->
+        <form method="POST">
+            {% csrf_token %}
+            <table class="table table-bordered" id="table_invoice_add">
+                <tbody>
+                    {% for field in form %}
+                    <tr>
+                        <td id="first_column_invoice_add_table">{{field.label_tag}}</td>
+                        <td id="second_column_invoice_add_table">
+                            {{field}}
+                            {{field.errors}}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>           
+            <input type="Submit" class="submit_button" name="submit" value="Submit">
+        </form>
+    <!-- </div>
+    <div class="second column">
+
+    </div>
+</div> -->
+{% endblock %}

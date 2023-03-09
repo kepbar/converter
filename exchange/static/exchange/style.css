@@ -1,0 +1,126 @@
+.submit_button{
+    background-color: rgb(26, 187, 26);
+    color: white;
+}
+.delete_button{
+    background-color: red;
+    color: white;
+}
+
+.a_tag_button_go_to_details {  
+    text-decoration: none;
+    background-color: lightblue;
+    color: black;
+    padding: 2px 6px 2px 6px;
+    border: 1px solid black;
+    padding: 1px 6px;
+    border-width: 2px;
+  }
+
+.a_tag_button_edit_button {  
+    text-decoration: none;
+    background-color:cornflowerblue;
+    color: black;
+    padding: 2px 6px 2px 6px;
+    border: 1px solid black;
+    padding: 1px 6px;
+    border-width: 2px;
+  }
+
+  .a_tag_button_delete_button {
+    text-decoration: none;
+    background-color: red;
+    color: white;
+    padding: 2px 6px 2px 6px;
+    border: 1px solid black;
+    padding: 1px 6px;
+    border-width: 2px;
+  }
+
+.a_tag_button_dont_confirm {
+    text-decoration: none;
+    background-color: rgb(26, 187, 26);
+    color: white;
+    padding: 2px 6px 2px 6px;
+    border: 1px solid black;
+    padding: 1px 6px;
+    border-width: 2px;
+}
+
+
+.t_head{
+    background-color:rgb(105, 175, 255);
+    color: white;
+    /* text-align: center; */
+    border-color: black;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+#table_invoice_add{
+  width: auto;
+}
+
+#first_column_invoice_add_table{
+  background-color:rgb(220, 240, 255);
+  padding: 12px;
+}
+
+#second_column_invoice_add_table{
+  padding: 12px;
+}
+
+#unpaid_invoices_table{
+  position: relative;
+  width: 100%;
+  margin-bottom: 0px;
+}
+.div_unpaid_invoices_table{
+  border: 1px solid black;
+}
+
+
+.main_container{
+  display: flex;
+}
+
+.left_side{
+  padding: 20px;
+  width: 50%;
+}
+
+.right_side{
+  padding: 20px;
+  width: 50%;
+}
+
+.current_sums{
+  text-align: center;
+  display:flex;
+}
+
+.card{
+  flex-grow: 1;
+  flex: 0 25%;
+}
+
+.card-header{
+  height: 100%;
+}
+
+.small_font{
+  font-size: small;
+}
+
+.welcome_page{
+  padding: 20px;
+  
+}
+.welcome_h1{
+  text-align: center;
+}
+
+.bold{
+  font-weight: bold;
+  font-weight: 700;
+}

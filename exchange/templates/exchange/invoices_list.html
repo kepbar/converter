@@ -1,0 +1,15 @@
+{% extends "exchange\base.html" %}
+
+{% block content %}
+<h1>Invoices list:</h1>
+<ul>
+    {% for inv in invoices_list %}
+        <li>Company name: {{inv.companyname}} <br>
+            Invoice date: {{inv.inv_date}} <br>
+            Amount: {{inv.inv_amount_PLN}}PLN <br>
+            Paid: {{inv.is_paid}}<br>
+            <a href="/exchange/invoice_detail/{{inv.id}}" class="a_tag_button_go_to_details">Details</a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

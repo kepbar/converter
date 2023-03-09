@@ -1,0 +1,38 @@
+{% extends "exchange\base.html" %}
+
+{% block content %}
+    <h1>Are you sure you want to delete this invoice?</h1>
+    <table class="table table-striped">
+        <thead class="t_head">
+          <tr>
+            <th scope="col">Company name</th>
+            <th scope="col">Invoice date</th>
+            <th scope="col">Invoice amount</th>
+            <th scope="col">Invoice currency</th>
+            <th scope="col">Exchange rate date</th>
+            <th scope="col">Exchange rate</th>
+            <th scope="col">Amount in PLN</th>
+            <th scope="col">Paid</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{{invoices.companyname}}</td>
+            <td>{{invoices.inv_date|date:"d M Y" }}</td>
+            <td>{{invoices.inv_amount}}</td>
+            <td>{{invoices.inv_currency}}</td>
+            <td>{{invoices.rate_date}}</td>
+            <td>{{invoices.rate}}</td>
+            <td>{{invoices.inv_amount_PLN}}PLN</td>
+            <td>{{invoices.is_paid}}</td>
+        </tr>
+        </tbody>
+    </table>
+<form method="POST">
+    {% csrf_token %}
+    <a href="/exchange/invoices_table" class="a_tag_button_dont_confirm">No! Go to invoices table</a>
+    <a href="/exchange/invoices_list" class="a_tag_button_dont_confirm">No! Go to invoices list</a>
+    <input type="submit" class="delete_button" value="Confirm Delete">
+</form>
+
+{% endblock %}
