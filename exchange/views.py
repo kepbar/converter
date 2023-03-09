@@ -181,3 +181,5 @@ class RatesListView(ListView):
 
 def welcome(request):
     return render(request, 'exchange/welcome.html')
+
+# Paweł dobry ludź
